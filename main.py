@@ -27,11 +27,3 @@ temp_coeffs, *_ = np.linalg.lstsq(inverse_terms, temperature_vals, rcond=None)
 print(f"Temperature model coefficients: {temp_coeffs}")
 print(f"T(V) = {temp_coeffs[0]:.6f} + {temp_coeffs[1]:.6f}*V + {temp_coeffs[2]:.6f}*V^2")
 
-# Step 4: Verification – predict sample points 
-predicted_voltage = np.dot(poly_terms, voltage_coeffs)
-predicted_temp = np.dot(inverse_terms, temp_coeffs)
-
-# Display a quick check at sample index 0
-print(f"\nSample check:")
-print(f"Measured V: {voltage_vals[0]:.4f}, Predicted V: {predicted_voltage[0]:.4f}")
-print(f"Measured T: {temperature_vals[0]:.2f}, Predicted T: {predicted_temp[0]:.2f}")
